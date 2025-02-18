@@ -1,10 +1,11 @@
-import { person } from "../data/data.js";
+import { person, navItems } from "../data/data.js";
 
 export const home = (req, res) => {
   // res.render("NAAM VAN DE VIEW", {"DATA NAAR DE VIEW"})
   res.render("pages/home", {
     title: "Dinosaurs around the world",
     content: "Welcome to the world of dinosaurs",
+    navItems,
   });
 };
 
@@ -18,6 +19,7 @@ export const about = (req, res) => {
       "Stegosaurus",
       "<strong>Premium</strong> Diplodocus",
     ],
+    navItems,
   });
 };
 
@@ -26,6 +28,7 @@ export const contact = (req, res) => {
     title: "Contact",
     content: "Contact us at +32 123 45 67 89",
     person,
+    navItems,
   });
 };
 
@@ -34,5 +37,6 @@ export const privacy = (req, res) => {
     title: "Privacy Policy",
     content: "Dinosaurs are protective of their privacy",
     team: false,
+    navItems,
   });
 };
