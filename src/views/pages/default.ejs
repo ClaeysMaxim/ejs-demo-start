@@ -15,9 +15,28 @@
     <h1>
         <%= title %>
     </h1>
+
+    <hr>
+
     <p>
         <%= content %>
     </p>
+
+    <hr>
+
+    <% if(team) { %>
+        <h3>Teamleden komen hier</h3>
+        <ul>
+            <% team.forEach (dino=> { %>
+                <li>
+                    <!-- "=" nodig voor de waarde -->
+                    <!-- "-" om bv "<strong>" te gebruiken (zie PageController.js)" -->
+                    <%- dino %>
+                </li>
+
+                <% }); %>
+        </ul>
+        <% } %>
 </body>
 
 </html>
