@@ -12,42 +12,39 @@
 
 <body>
     <h1>Welcome to EJS!</h1>
-    <nav>
-        <ul>
-            <% navItems.forEach(nav=> { %>
-                <li>
-                    <a href="<%= nav.url %>">
-                        <%= nav.label %>
-                    </a>
-                </li>
-                <% }); %>
-        </ul>
-    </nav>
     <h1>
         <%= title %>
     </h1>
 
-    <hr>
+    <main>
 
-    <p>
-        <%= content %>
-    </p>
 
-    <hr>
+        <%- include('../partials/nav') %>
 
-    <% if(team) { %>
-        <h3>Teamleden komen hier</h3>
-        <ul>
-            <% team.forEach (dino=> { %>
-                <li>
-                    <!-- "=" nodig voor de waarde -->
-                    <!-- "-" om bv "<strong>" te gebruiken (zie PageController.js)" -->
-                    <%- dino %>
-                </li>
+            <hr>
 
-                <% }); %>
-        </ul>
-        <% } %>
+            <p>
+                <%= content %>
+            </p>
+
+            <hr>
+
+            <% if(team) { %>
+                <h3>Teamleden komen hier</h3>
+                <ul>
+                    <% team.forEach (dino=> { %>
+                        <li>
+                            <!-- "=" nodig voor de waarde -->
+                            <!-- "-" om bv "<strong>" te gebruiken (zie PageController.js)" -->
+                            <%- dino %>
+                        </li>
+
+                        <% }); %>
+                </ul>
+                <% } %>
+
+    </main>
+    <%- include('../partials/footer')%>
 
 </body>
 

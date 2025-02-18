@@ -15,27 +15,24 @@
     <h1>
         <%= title %>
     </h1>
-    <nav>
-        <ul>
-            <% navItems.forEach(nav=> { %>
-                <li>
-                    <a href="<%= nav.url %>">
-                        <%= nav.label %>
-                    </a>
-                </li>
-                <% }); %>
-        </ul>
-    </nav>
-    <p>
-        <%= content %>
-    </p>
-    <h3>
-        <%= `${person.firstname} ${person.lastname}` %>
-    </h3>
 
-    <address>
-        <%= person.location.city + ", " + person.location.country %>
-    </address>
+    <main>
+
+        <%- include('../partials/nav') %>
+
+            <p>
+                <%= content %>
+            </p>
+            <h3>
+                <%= `${person.firstname} ${person.lastname}` %>
+            </h3>
+
+            <address>
+                <%= person.location.city + ", " + person.location.country %>
+            </address>
+
+    </main>
+    <%- include('../partials/footer')%>
 
 </body>
 
