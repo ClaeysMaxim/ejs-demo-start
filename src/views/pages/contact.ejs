@@ -15,17 +15,6 @@
     <h1>
         <%= title %>
     </h1>
-    <p>
-        <%= content %>
-    </p>
-    <h3>
-        <%= `${person.firstname} ${person.lastname}` %>
-    </h3>
-
-    <address>
-        <%= person.location.city + ", " + person.location.country %>
-    </address>
-
     <nav>
         <ul>
             <% navItems.forEach(nav=> { %>
@@ -37,6 +26,17 @@
                 <% }); %>
         </ul>
     </nav>
+    <p>
+        <%= content %>
+    </p>
+    <h3>
+        <%= `${person.firstname} ${person.lastname}` %>
+    </h3>
+
+    <address>
+        <%= person.location.city + ", " + person.location.country %>
+    </address>
+
 </body>
 
 </html>

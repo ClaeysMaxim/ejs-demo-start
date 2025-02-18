@@ -12,6 +12,17 @@
 
 <body>
     <h1>Welcome to EJS!</h1>
+    <nav>
+        <ul>
+            <% navItems.forEach(nav=> { %>
+                <li>
+                    <a href="<%= nav.url %>">
+                        <%= nav.label %>
+                    </a>
+                </li>
+                <% }); %>
+        </ul>
+    </nav>
     <h1>
         <%= title %>
     </h1>
@@ -38,17 +49,6 @@
         </ul>
         <% } %>
 
-            <nav>
-                <ul>
-                    <% navItems.forEach(nav=> { %>
-                        <li>
-                            <a href="<%= nav.url %>">
-                                <%= nav.label %>
-                            </a>
-                        </li>
-                        <% }); %>
-                </ul>
-            </nav>
 </body>
 
 </html>
