@@ -1,5 +1,6 @@
 // import statements
 import express from "express";
+import expressLayouts from "express-ejs-layouts";
 import path from "path";
 
 import { home, about, contact, privacy } from "./controllers/PageController.js";
@@ -7,8 +8,12 @@ import { home, about, contact, privacy } from "./controllers/PageController.js";
 // create an instance of express
 const app = express();
 
+// Use express layouts
+app.use(expressLayouts);
+
 // Set the view engine to ejs
 app.set("view engine", "ejs");
+app.set("layout", "layouts/main");
 app.set("views", path.resolve("src", "views"));
 
 // serve static files from the public folder
@@ -19,6 +24,13 @@ app.get("/", home);
 app.get("/about", about);
 app.get("/contact", contact);
 app.get("/privacy", privacy);
+
+// 404 page
+app.get("*", (req, res) => {
+  res.status(404).render("errors/404", {
+    layout: "layouts/error", // Override default layout
+  });
+});
 
 // GET route to serve the home.ejs file
 app.get("/", (req, res) => {
