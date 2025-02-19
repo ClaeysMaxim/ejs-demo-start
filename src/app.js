@@ -2,48 +2,40 @@
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import path from "path";
-
 import { home, about, contact, privacy } from "./controllers/PageController.js";
+import * as dinos from "./controllers/DinoController.js";
+
+import helpers from "./utils/templateHelpers.js";
 
 // create an instance of express
 const app = express();
 
-// Use express layouts
+// use express layouts
 app.use(expressLayouts);
-
-// Set the view engine to ejs
+// set the view engine to ejs
 app.set("view engine", "ejs");
 app.set("layout", "layouts/main");
 app.set("views", path.resolve("src", "views"));
+
+// make the helpers available to all views
+Object.assign(app.locals, helpers);
 
 // serve static files from the public folder
 // they can be accessed from the root of the site (e.g. /assets/images/dino_07.png) 🦕
 app.use(express.static("public"));
 
+// page routes
 app.get("/", home);
 app.get("/about", about);
 app.get("/contact", contact);
 app.get("/privacy", privacy);
+app.get("/dinosaurs", dinos.index);
+app.get("/dinosaurs/:slug", dinos.detail);
 
 // 404 page
 app.get("*", (req, res) => {
   res.status(404).render("errors/404", {
-    layout: "layouts/error", // Override default layout
-  });
-});
-
-// GET route to serve the home.ejs file
-app.get("/", (req, res) => {
-  res.render("home", {
-    title: "Dinosaurs are awesome",
-    content: "Dinosaurs are a diverse group of reptiles of the clade Dinosaurs",
-  });
-});
-
-app.get("/about", (req, res) => {
-  res.render("home", {
-    title: "About",
-    content: "This is a page about dinosaurs!",
+    layout: "layouts/error", // override the default layout
   });
 });
 
